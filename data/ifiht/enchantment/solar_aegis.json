@@ -6,17 +6,36 @@
 	"effects": {
 		"minecraft:attributes": [
 			{
+				"attribute": "minecraft:generic.armor",
+				"id": "ifiht:enchantment.solar_aegis",
+				"operation": "add_value",
 				"amount": {
 					"type": "minecraft:linear",
 					"base": 1.0,
 					"per_level_above_first": 1.0
-				},
-				"attribute": "minecraft:generic.armor",
-				"id": "ifiht:enchantment.solar_aegis",
-				"operation": "add_value",
-				"slot": "chest"
+				}
 			}
-		]
+		],
+		"minecraft:post_attack": [
+			{
+				"affected": "attacker",
+				"effect": {
+					"type": "minecraft:ignite",
+					"duration": {
+						"type": "minecraft:linear",
+						"base": 3.0,
+						"per_level_above_first": 3.0
+					}
+				},
+				"enchanted": "victim",
+				"requirements": {
+					"condition": "minecraft:damage_source_properties",
+					"predicate": {
+						"is_direct": true
+					}
+				}
+			}
+    	]
 	},
 	"item_modifier": "ifiht:solarized_description",
 	"max_cost": {
